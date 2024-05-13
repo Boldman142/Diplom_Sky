@@ -1,0 +1,29 @@
+{% extends 'service_list/base.html' %}
+
+{% block context%}
+<div class="row text-center">
+    <div class="col-3">
+        <div class="card mb-4 box-shadow">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">{{ object.name }}</h4>
+            </div>
+            <div class="card-body">
+                {% if item.picture %}
+                    <img src="{{ object.picture.url }}" alt="..." class="img-thumbnail">
+                {% endif %}
+                <h1 class="card-title pricing-card-title">{{ object.price }}₽</h1>
+                <ul class="list-unstyled mt-3 mb-4 text-start m-3">
+
+                    <li>- {{ object.overview }}</li>
+
+
+                </ul>
+                <button type="button" class="btn btn-lg btn-block btn-outline-primary">Купить</button>
+                {% if perms.catalog.delete_product %}
+                    <a class="btn btn-lg btn-block btn-outline-danger" href="{% url 'service_list:product_delete' object.pk %}">Удалить</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

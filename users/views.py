@@ -45,8 +45,9 @@ class RegisterView(CreateView):
         )
 
         send_mail(
-            subject='Мои поздравления',
-            message=f'Ты один из нас, бобро пожаловать. \nПройди по ссылке для активации аккаунта '
+            subject='Регистрация на сайте обследований',
+            message=f'Добро пожаловать на сайт медицинский обследований.'
+                    f' \nПройдите по ссылке для активации аккаунта: '
                     f'{verify_url}',
             from_email=settings.EMAIL_HOST_USER,
             recipient_list=[new_user.email]

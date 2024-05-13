@@ -1,0 +1,27 @@
+{% extends 'service_list/base.html' %}
+
+{% block context%}
+<div class="row text-center">
+    <div class="col-3">
+        <div class="card mb-4 box-shadow">
+            <form method="post">
+                {% csrf_token %}
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Вы уверены, что хотите удалить из каталога услугу {{ object.name }}?</h4>
+                </div>
+                <div class="card-body">
+                    {% if item.picture %}
+                    <img src="{{ object.picture.url }}" alt="..." class="img-thumbnail">
+                    {% endif %}
+                    <h1 class="card-title pricing-card-title">{{ object.price }}₽</h1>
+                    <ul class="list-unstyled mt-3 mb-4 text-start m-3">
+                        <li>- {{ object.overview }}</li>
+                    </ul>
+                    <button class="p-2 btn btn-outline-danger" type="submit">Подтвердить</button>
+                    <a class="p-2 btn btn-outline-primary" href="{% url 'service_list:product_detail' object.pk%}">Отмена</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

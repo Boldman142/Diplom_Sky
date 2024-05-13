@@ -1,0 +1,35 @@
+{% extends 'service_list/base.html' %}
+
+{% block context%}
+<form method="post">
+    <div class="row">
+        <div class="col-4 ">
+            <div class="card mb-4 box-shadow">
+                <div class="card-header  text-center">
+                    <h4 class="my-0 font-weight-normal">
+                        {% if object %}
+                            {{ object.name }}
+                        {% else %}
+                            Добавить продукт
+                        {% endif %}
+                    </h4>
+                </div>
+                <div class="card-body">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="btn btn-lg btn-block btn-outline-primary" type="submit">
+                        {% if object %}
+                            Сохранить
+                        {% else %}
+                            Добавить
+                        {% endif %}
+                    </button>
+                    {% if object and perms.catalog.delete_product %}
+                        <a class="btn btn-lg btn-block btn-outline-danger" href="{% url 'service_list:product_delete' object.pk %}">Удалить</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}

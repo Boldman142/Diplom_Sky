@@ -8,7 +8,7 @@ from service_list.models import NULLABLE
 class User(AbstractUser):
     username = None
 
-    email = models.EmailField(unique=True, verbose_name='мыло')
+    email = models.EmailField(unique=True, verbose_name='электронная почта')
     is_active = models.BooleanField(
         default=False,
         help_text=(
