@@ -11,7 +11,7 @@
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
     <h5 class="my-0 mr-md-auto font-weight-normal">Медицинская диагностика</h5>
     <nav class="ms-5">
-         {% if user.is_authenticated %}
+         {% if user.is_authenticated and user.is_staff %}
             <a class="p-2 btn btn-outline-primary" href="{% url 'service_list:product_create' %}">Добавить товар</a>
         {% endif %}
         <a class="p-2 btn btn-outline-primary" href="{% url 'service_list:category_list' %}">Список услуг</a>

@@ -1,26 +1,20 @@
-from django.shortcuts import render
-
 from django.contrib.auth.views import LoginView as BaseLogin
 from django.contrib.auth.views import LogoutView as BaseLogout
 from django.contrib.auth.hashers import make_password
 from django.views.generic import CreateView, UpdateView, View
 from django.urls import reverse_lazy, reverse
-from django.core.mail import send_mail
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 from django.contrib.auth.tokens import default_token_generator
 from django.http import Http404
 from django.contrib import messages
-from django.template.loader import render_to_string
 
-from django.conf import settings
 from users.forms import UserForm, UserRegisterForm
 from users.models import User
+from users.services import my_send_mail
 
 
 class LoginView(BaseLogin):
     template_name = "users/login.html"
-    # success_url = '/'  # URL, на который нужно перенаправить пользователя после успешной аутентификации
-    # form_class = UserForm
 
 
 class LogoutView(BaseLogout):
@@ -43,15 +37,7 @@ class RegisterView(CreateView):
         verify_url = self.request.build_absolute_uri(
             reverse_lazy('users:verify_email', kwargs={'pk': new_user.pk, 'token': token})
         )
-
-        send_mail(
-            subject='Регистрация на сайте обследований',
-            message=f'Добро пожаловать на сайт медицинский обследований.'
-                    f' \nПройдите по ссылке для активации аккаунта: '
-                    f'{verify_url}',
-            from_email=settings.EMAIL_HOST_USER,
-            recipient_list=[new_user.email]
-        )
+        my_send_mail(email=new_user.email, url=verify_url)
         return super().form_valid(form)
 
 
@@ -87,4 +73,3 @@ def generate_new_password(request):
     request.user.set_password(new_password)
     request.user.save()
     return redirect(reverse('users:login'))
-

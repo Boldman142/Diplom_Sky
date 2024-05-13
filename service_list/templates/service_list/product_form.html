@@ -1,16 +1,16 @@
 {% extends 'service_list/base.html' %}
 
 {% block context%}
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     <div class="row">
-        <div class="col-4 ">
+        <div class="col-6 ">
             <div class="card mb-4 box-shadow">
                 <div class="card-header  text-center">
                     <h4 class="my-0 font-weight-normal">
                         {% if object %}
                             {{ object.name }}
                         {% else %}
-                            Добавить продукт
+                            Добавить обследование
                         {% endif %}
                     </h4>
                 </div>
