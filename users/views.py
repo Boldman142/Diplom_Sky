@@ -1,8 +1,8 @@
 from django.contrib.auth.views import LoginView as BaseLogin
 from django.contrib.auth.views import LogoutView as BaseLogout
-from django.contrib.auth.hashers import make_password
+
 from django.views.generic import CreateView, UpdateView, View
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse_lazy
 from django.shortcuts import redirect
 from django.contrib.auth.tokens import default_token_generator
 from django.http import Http404
@@ -67,9 +67,3 @@ class UserUpdateView(UpdateView):
         return self.request.user
 
 
-def generate_new_password(request):
-    new_password = User.objects.make_random_password()
-    print(new_password)
-    request.user.set_password(new_password)
-    request.user.save()
-    return redirect(reverse('users:login'))
