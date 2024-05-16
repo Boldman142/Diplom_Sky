@@ -42,7 +42,6 @@ INSTALLED_APPS = [
 
     'service_list',
     'users',
-    'records',
 ]
 
 MIDDLEWARE = [

@@ -57,6 +57,7 @@ class ProductListView(ListView):
         prod_type = Category.objects.get(pk=self.kwargs.get('pk'))
         context_data = super().get_context_data(*args, **kwargs)
         context_data['title'] = f'Обследования из раздела: {prod_type.name}'
+
         return context_data
 
 

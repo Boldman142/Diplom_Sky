@@ -25,7 +25,7 @@ class ProductForm(StyleForMixin, FindBadWord, forms.ModelForm):
 
     class Meta:
         model = Product
-        fields = ('name', 'overview', 'category', 'picture', 'price')
+        fields = ('name', 'overview', 'overview_big', 'category', 'picture', 'price')
 
     def clean_name(self):
         cleaned_data = self.cleaned_data.get('name')
