@@ -1,11 +1,13 @@
-from django.views.generic import DetailView, ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import (DetailView, ListView,
+                                  CreateView, UpdateView, DeleteView)
 
 from service_list.models import Category, Product
 
 from django.urls import reverse_lazy, reverse
 from service_list.forms import ProductForm
 from django.http import Http404
-from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
+from django.contrib.auth.mixins import (PermissionRequiredMixin,
+                                        LoginRequiredMixin)
 
 
 class CategoryListView(ListView):
@@ -34,7 +36,8 @@ class ProductUpdateView(PermissionRequiredMixin, UpdateView):
     form_class = ProductForm
 
     def get_success_url(self, *args, **kwargs):
-        return reverse('service_list:product_detail', args=[self.get_object().pk])
+        return reverse('service_list:product_detail',
+                       args=[self.get_object().pk])
 
     def get_object(self, queryset=None):
         self.object = super().get_object(queryset)

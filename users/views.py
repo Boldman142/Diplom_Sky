@@ -35,7 +35,8 @@ class RegisterView(CreateView):
         new_user.save()
 
         verify_url = self.request.build_absolute_uri(
-            reverse_lazy('users:verify_email', kwargs={'pk': new_user.pk, 'token': token})
+            reverse_lazy('users:verify_email',
+                         kwargs={'pk': new_user.pk, 'token': token})
         )
         my_send_mail(email=new_user.email, url=verify_url)
         return super().form_valid(form)
@@ -51,10 +52,12 @@ class VerifyEmailView(View):
         if user.verification_token == token:
             user.is_active = True
             user.save()
-            messages.success(request, 'Ваш аккаунт успешно активирован. Вы можете войти.')
+            messages.success(request, 'Ваш аккаунт успешно активирован.'
+                                      ' Вы можете войти.')
             return redirect('users:login')
         else:
-            messages.error(request, 'Неверная ссылка для верификации. Пожалуйста, свяжитесь с администратором.')
+            messages.error(request, 'Неверная ссылка для верификации.'
+                                    ' Пожалуйста, свяжитесь с руководством.')
             return redirect('users:login')
 
 
@@ -65,5 +68,3 @@ class UserUpdateView(UpdateView):
 
     def get_object(self, queryset=None):
         return self.request.user
-
-

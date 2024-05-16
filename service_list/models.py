@@ -20,15 +20,16 @@ class Category(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length=50, verbose_name='Наименование')
     overview = models.TextField(verbose_name='Короткое описание')
-    overview_big = models.TextField(verbose_name='Полное описание', **NULLABLE)
+    overview_big = models.TextField(verbose_name='Полное описание',
+                                    default='Для записи позвоните по номеру 8-800-555-35-35')
     picture = models.ImageField(upload_to='service_list/', **NULLABLE)
     category = models.ForeignKey('Category', verbose_name='Категория',
                                  on_delete=models.SET_DEFAULT, default='000')
     price = models.IntegerField(verbose_name='Цена')
 
-    creator = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, **NULLABLE,
-                                verbose_name='Создатель')
-    time_to_session = models.PositiveSmallIntegerField(default=15, verbose_name='время на сеанс')
+    creator = models.ForeignKey(settings.AUTH_USER_MODEL,
+                                on_delete=models.SET_NULL,
+                                **NULLABLE, verbose_name='Создатель')
 
     def __str__(self):
         return f'{self.name}'

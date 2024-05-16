@@ -16,7 +16,8 @@ class User(AbstractUser):
             "Unselect this instead of deleting accounts."
         ),
     )
-    verification_token = models.CharField(max_length=100, verbose_name='токен верификации', **NULLABLE)
+    verification_token = models.CharField(max_length=100,
+                                          verbose_name='токен верификации', **NULLABLE)
     avatar = models.ImageField(upload_to='users/', verbose_name='аватар', **NULLABLE)
     phone = models.CharField(max_length=35, verbose_name='номер телефона', **NULLABLE)
 

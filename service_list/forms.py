@@ -16,7 +16,8 @@ class FindBadWord:
     def search_word(self, enter):
         for word in self.danger_words:
             if word in enter.lower():
-                raise forms.ValidationError(f'Таким "{word}", мы не занимаемся')
+                raise forms.ValidationError(f'Таким'
+                                            f' "{word}", мы не занимаемся')
 
 
 class ProductForm(StyleForMixin, FindBadWord, forms.ModelForm):
@@ -25,7 +26,8 @@ class ProductForm(StyleForMixin, FindBadWord, forms.ModelForm):
 
     class Meta:
         model = Product
-        fields = ('name', 'overview', 'overview_big', 'category', 'picture', 'price')
+        fields = ('name', 'overview', 'overview_big',
+                  'category', 'picture', 'price')
 
     def clean_name(self):
         cleaned_data = self.cleaned_data.get('name')

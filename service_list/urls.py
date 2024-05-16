@@ -1,8 +1,9 @@
 from django.urls import path
 
 from service_list.apps import ServiceListConfig
-from service_list.views import CategoryListView, ProductListView, ProductDetailView, ProductCreateView, \
-    ProductUpdateView, ProductDeleteView
+from service_list.views import (CategoryListView, ProductListView,
+                                ProductDetailView, ProductCreateView,
+                                ProductUpdateView, ProductDeleteView)
 
 app_name = ServiceListConfig.name
 
