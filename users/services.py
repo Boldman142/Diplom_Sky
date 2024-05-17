@@ -9,9 +9,9 @@ def my_send_mail(email, url=None):
         message = (f'Добро пожаловать на сайт медицинский обследований.'
                    f'\nПройдите по ссылке для активации аккаунта: {url}')
 
-    send_mail(
-        subject=subject,
-        message=message,
-        from_email=settings.EMAIL_HOST_USER,
-        recipient_list=recipient_list
-    )
+        send_mail(
+            subject=subject,
+            message=message,
+            from_email=settings.EMAIL_HOST_USER,
+            recipient_list=recipient_list
+        )

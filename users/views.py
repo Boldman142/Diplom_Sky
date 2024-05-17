@@ -1,7 +1,7 @@
 from django.contrib.auth.views import LoginView as BaseLogin
 from django.contrib.auth.views import LogoutView as BaseLogout
 
-from django.views.generic import CreateView, UpdateView, View
+from django.views.generic import CreateView, UpdateView, View, TemplateView
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
 from django.contrib.auth.tokens import default_token_generator
@@ -52,13 +52,9 @@ class VerifyEmailView(View):
         if user.verification_token == token:
             user.is_active = True
             user.save()
-            messages.success(request, 'Ваш аккаунт успешно активирован.'
-                                      ' Вы можете войти.')
-            return redirect('users:login')
+            return redirect('users:register_done')
         else:
-            messages.error(request, 'Неверная ссылка для верификации.'
-                                    ' Пожалуйста, свяжитесь с руководством.')
-            return redirect('users:login')
+            return redirect('users:register_fail')
 
 
 class UserUpdateView(UpdateView):
@@ -68,3 +64,18 @@ class UserUpdateView(UpdateView):
 
     def get_object(self, queryset=None):
         return self.request.user
+
+
+class RegisterDoneView(TemplateView):
+    template_name = 'users/register_done.html'
+    extra_context = {
+        'answer': 'Ваш аккаунт успешно активирован. Вы можете войти.'
+    }
+
+
+class RegisterFailView(TemplateView):
+    template_name = 'users/register_fail.html'
+    extra_context = {
+        'answer': 'Неверная ссылка для верификации. '
+                  'Пожалуйста, свяжитесь с руководством.'
+    }

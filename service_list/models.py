@@ -24,12 +24,13 @@ class Product(models.Model):
                                     default='Для записи позвоните по номеру 8-800-555-35-35')
     picture = models.ImageField(upload_to='service_list/', **NULLABLE)
     category = models.ForeignKey('Category', verbose_name='Категория',
-                                 on_delete=models.SET_DEFAULT, default='000')
+                                 on_delete=models.SET_NULL, **NULLABLE)
     price = models.IntegerField(verbose_name='Цена')
 
     creator = models.ForeignKey(settings.AUTH_USER_MODEL,
                                 on_delete=models.SET_NULL,
-                                **NULLABLE, verbose_name='Создатель')
+                                verbose_name='Создатель',
+                                **NULLABLE)
 
     def __str__(self):
         return f'{self.name}'
