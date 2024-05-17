@@ -1,0 +1,103 @@
+[
+  {
+    "model": "service_list.category",
+    "pk": 1,
+    "fields": {
+      "name": "Рентгенография",
+      "overview": "Все, что связано с рентгенами",
+      "picture": ""
+    }
+  },
+  {
+    "model": "service_list.category",
+    "pk": 2,
+    "fields": {
+      "name": "Ультразвуковое исследование",
+      "overview": "УЗИ и все такое",
+      "picture": ""
+    }
+  },
+  {
+    "model": "service_list.category",
+    "pk": 3,
+    "fields": {
+      "name": "Магнитно-резонансная томография",
+      "overview": "МРТ всех частей тела",
+      "picture": ""
+    }
+  },
+  {
+    "model": "service_list.category",
+    "pk": 4,
+    "fields": {
+      "name": "Анализы",
+      "overview": "Кровь, слюна, и прочие жидкости",
+      "picture": ""
+    }
+  },
+  {
+    "model": "service_list.product",
+    "pk": 1,
+    "fields": {
+      "name": "МРТ головы",
+      "overview": "МРТ головного мозга, быстро, качественно",
+      "overview_big": "Запихиваем в магнит, и рассматриваем",
+      "picture": "service_list/k0013_Yp2i446.jpg",
+      "category": 3,
+      "price": 2000,
+      "creator": null
+    }
+  },
+  {
+    "model": "service_list.product",
+    "pk": 7,
+    "fields": {
+      "name": "Общий анализ крови",
+      "overview": "самый общий из всех общих",
+      "overview_big": "Для записи позвоните по номеру 8-800-555-35-35",
+      "picture": "",
+      "category": 4,
+      "price": 1500,
+      "creator": null
+    }
+  },
+  {
+    "model": "service_list.product",
+    "pk": 8,
+    "fields": {
+      "name": "Флюорография",
+      "overview": "просветим легкие",
+      "overview_big": "Для записи позвоните по номеру 8-800-555-35-35",
+      "picture": "",
+      "category": 1,
+      "price": 500,
+      "creator": null
+    }
+  },
+  {
+    "model": "service_list.product",
+    "pk": 9,
+    "fields": {
+      "name": "УЗИ живота",
+      "overview": "УЗИ органов брюшной полости",
+      "overview_big": "Для записи позвоните по номеру 8-800-555-35-35",
+      "picture": "",
+      "category": 2,
+      "price": 2000,
+      "creator": null
+    }
+  },
+  {
+    "model": "service_list.product",
+    "pk": 10,
+    "fields": {
+      "name": "анализ мочи",
+      "overview": "тоже общий но уже не крови",
+      "overview_big": "Для записи позвоните по номеру 8-800-555-35-35",
+      "picture": "",
+      "category": 4,
+      "price": 600,
+      "creator": null
+    }
+  }
+]
