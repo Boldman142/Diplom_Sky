@@ -25,7 +25,7 @@ class Product(models.Model):
     picture = models.ImageField(upload_to='service_list/', **NULLABLE)
     category = models.ForeignKey('Category', verbose_name='Категория',
                                  on_delete=models.SET_NULL, **NULLABLE)
-    price = models.IntegerField(verbose_name='Цена')
+    price = models.PositiveIntegerField(verbose_name='Цена')
 
     creator = models.ForeignKey(settings.AUTH_USER_MODEL,
                                 on_delete=models.SET_NULL,
