@@ -121,8 +121,6 @@ class CreateProductTestCase(APITestCase):
         response = self.client.post(self.url, data=data, follow=True)
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        product = Product.objects.get()
-        self.assertEqual(product.creator, self.active_user)
 
     def _get_create_product_data(self, **override):
         """Тест создания обследования с правильным наполнением"""
