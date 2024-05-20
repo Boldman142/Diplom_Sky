@@ -6,7 +6,6 @@ from django.urls import reverse_lazy
 from django.shortcuts import redirect
 from django.contrib.auth.tokens import default_token_generator
 from django.http import Http404
-from django.contrib import messages
 
 from users.forms import UserForm, UserRegisterForm
 from users.models import User
